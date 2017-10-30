@@ -1,5 +1,10 @@
 ﻿# NodejsConsoleApp
-ALTER USER 'root'@'localhost' IDENTIFIED BY '';
+#ALTER USER 'root'@'localhost' IDENTIFIED BY '';
+
+UPDATE mysql.user
+    SET authentication_string = PASSWORD(''), password_expired = 'N'
+    WHERE User = 'root' AND Host = 'localhost';
+FLUSH PRIVILEGES;
 
 CREATE SCHEMA `Measures`;
 
