@@ -22,4 +22,8 @@ INSERT INTO `Measures`.`Measure` (`Time`, `Temperature`) VALUES ('2017-10-24 20:
 INSERT INTO `Measures`.`Measure` (`Time`, `Temperature`) VALUES ('2017-10-24 20:43:00', '29.2');
 
 # Add this string to Windows hosts
-192.168.0.50        raspberry_pi
+192.168.0.50        raspberrypi
+
+SELECT * FROM Measure WHERE Id IN (SELECT MAX(Id) FROM Measure); // Current Temp.
+SELECT * FROM Measures.Measure WHERE Temperature IN (SELECT MAX(Temperature) FROM Measures.Measure) ORDER BY Id DESC LIMIT 1;  // MAX Temp.
+SELECT * FROM Measures.Measure WHERE Temperature IN (SELECT MIN(Temperature) FROM Measures.Measure) ORDER BY Id DESC LIMIT 1;  // MIN Temp.
