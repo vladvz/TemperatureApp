@@ -1,10 +1,12 @@
 ﻿# NodejsConsoleApp
-#ALTER USER 'root'@'localhost' IDENTIFIED BY '';
-
-UPDATE mysql.user
-    SET authentication_string = PASSWORD(''), password_expired = 'N'
-    WHERE User = 'root' AND Host = 'localhost';
-FLUSH PRIVILEGES;
+​
+Nullify root password
+-----------------------
+sudo mysql -u root -p
+use mysql;
+update user set authentication_string=password(''), plugin='mysql_native_password' where user='root';
+quit;
+sudo service mysql restart
 
 CREATE SCHEMA `Measures`;
 
