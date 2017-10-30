@@ -2,7 +2,7 @@ exports.getConnection = function () {
     var mysql = require('mysql');
 
     return mysql.createConnection({
-        host: "raspberry_pi",
+        host: "raspberrypi",
         user: "root",
         password: "",
         database: "Measures"
