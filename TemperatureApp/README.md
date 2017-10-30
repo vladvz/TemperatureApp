@@ -19,4 +19,5 @@ INSERT INTO `Measures`.`Measure` (`Time`, `Temperature`) VALUES ('2017-10-24 20:
 INSERT INTO `Measures`.`Measure` (`Time`, `Temperature`) VALUES ('2017-10-24 20:42:00', '27.2');
 INSERT INTO `Measures`.`Measure` (`Time`, `Temperature`) VALUES ('2017-10-24 20:43:00', '29.2');
 
-
+# Add this string to Windows hosts
+192.168.0.50        raspberry_pi
