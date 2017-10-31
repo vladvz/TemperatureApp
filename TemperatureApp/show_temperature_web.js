@@ -3,7 +3,7 @@ var moment = require('moment');
 var dt = require('./get_temperature');
 var sqls = require('./get_sql');
 
-var format = 'DD/MM/YYYY HH:mm';
+var format = 'DD/MM/YYYY HH:mm:ss';
 
 http.createServer(function (req, res) {
     var currentTemperature = dt.getTemperature(sqls.getCurrentTemperatureSql());
@@ -17,6 +17,8 @@ http.createServer(function (req, res) {
         res.write(formatRow('Max temperature', values[1].Temperature, values[1].Time));
         res.write(formatRow('Min temperature', values[2].Temperature, values[2].Time));
         res.write('</table>');
+        res.write('</br>');
+        res.write('Last updated on ' + moment(Date.now()).format(format));
         res.end();
     }, reason => {
         res.writeHead(500, { 'Content-Type': 'text/html' });
