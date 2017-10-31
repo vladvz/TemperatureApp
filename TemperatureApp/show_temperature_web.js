@@ -3,15 +3,15 @@ var moment = require('moment');
 var dt = require('./get_temperature');
 var sqls = require('./get_sql');
 
-var currentTemperature = dt.getTemperature(sqls.getCurrentTemperatureSql());
-var maxTemperature = dt.getTemperature(sqls.getMaxTemperatureSql());
-var minTemperature = dt.getTemperature(sqls.getMinTemperatureSql());
-
 var format = 'DD/MM/YYYY HH:mm';
 
 http.createServer(function (req, res) {
-    res.writeHead(200, { 'Content-Type': 'text/html' });
+    var currentTemperature = dt.getTemperature(sqls.getCurrentTemperatureSql());
+    var maxTemperature = dt.getTemperature(sqls.getMaxTemperatureSql());
+    var minTemperature = dt.getTemperature(sqls.getMinTemperatureSql());
+
     Promise.all([currentTemperature, maxTemperature, minTemperature]).then(values => {
+        res.writeHead(200, { 'Content-Type': 'text/html', 'Cache-Control': 'no-cache' });
         res.write('<table cellpadding="5">');
         res.write(formatRow('Current temperature', values[0].Temperature, values[0].Time));
         res.write(formatRow('Max temperature', values[1].Temperature, values[1].Time));
