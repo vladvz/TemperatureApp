@@ -12,10 +12,12 @@ http.createServer(function (req, res) {
 
     Promise.all([currentTemperature, maxTemperature, minTemperature]).then(values => {
         res.writeHead(200, { 'Content-Type': 'text/html', 'Cache-Control': 'no-cache' });
-        res.write('<table cellpadding="5">');
-        res.write(formatRow('Current temperature', values[0].Temperature, values[0].Time));
-        res.write(formatRow('Max temperature', values[1].Temperature, values[1].Time));
-        res.write(formatRow('Min temperature', values[2].Temperature, values[2].Time));
+        res.write('<style>body { font-family: verdana; font-size: 10px; }</style>');
+        res.write('<table cellpadding="5" border="1">');
+        res.write('<tr><td><b>Temperature</b></td><td><b>C&deg;</b></td><td><b>Date/time</b></td></tr>');
+        res.write(formatRow('Current', values[0].Temperature, values[0].Time));
+        res.write(formatRow('Max', values[1].Temperature, values[1].Time));
+        res.write(formatRow('Min', values[2].Temperature, values[2].Time));
         res.write('</table>');
         res.write('</br>');
         res.write('Last updated on ' + moment(Date.now()).format(format));
@@ -29,5 +31,5 @@ http.createServer(function (req, res) {
 }).listen(8080);
 
 function formatRow(title, temperature, datetime) {
-    return '<tr><td><b>' + title + ': </b></td><td>' + temperature + '</td><td>' + moment(datetime).format(format) + '</td></tr>';
+    return '<tr><td><b>' + title + '</b></td><td>' + temperature + '</td><td>' + moment(datetime).format(format) + '</td></tr>';
 }
