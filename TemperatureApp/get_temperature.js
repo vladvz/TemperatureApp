@@ -1,4 +1,4 @@
-exports.checkTemperature = function () {
+exports.getTemperature = function (sql) {
     var mysql = require('mysql');
     var conn = require('./get_connection');
 
@@ -6,22 +6,20 @@ exports.checkTemperature = function () {
         var connection = conn.getConnection();
 
         connection.connect();
-        console.log("Connected");
-
-        var sql = "SELECT Temperature FROM Measure WHERE Id IN (SELECT MAX(Id) FROM Measure)";
+        //console.log("Connected");
 
         connection.query(sql, function (err, rows) {
             if (err) {
-                console.log("ERROR: ", err);
+                //console.log("ERROR: ", err);
                 reject(err);
             }
             else {
-                console.log("Result: ", rows[0].Temperature);
-                resolve(rows[0].Temperature);
+                //console.log("Result: ", rows[0].Temperature);
+                resolve(rows[0]);
             }
         });
 
         connection.end();
-        console.log("Disconnected");
+        //console.log("Disconnected");
     });
 };
