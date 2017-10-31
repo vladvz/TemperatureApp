@@ -6,9 +6,10 @@ var sqls = require('./get_sql');
 var format = 'DD/MM/YYYY HH:mm:ss';
 
 http.createServer(function (req, res) {
-    var currentTemperature = dt.getTemperature(sqls.getCurrentTemperatureSql());
-    var maxTemperature = dt.getTemperature(sqls.getMaxTemperatureSql());
-    var minTemperature = dt.getTemperature(sqls.getMinTemperatureSql());
+    var sql = new sqls.getTemperatureSql();
+    var currentTemperature = dt.getTemperature(sql.currentTemperature);
+    var maxTemperature = dt.getTemperature(sql.maxTemperature);
+    var minTemperature = dt.getTemperature(sql.minTemperature);
 
     Promise.all([currentTemperature, maxTemperature, minTemperature]).then(values => {
         res.writeHead(200, { 'Content-Type': 'text/html', 'Cache-Control': 'no-cache' });
