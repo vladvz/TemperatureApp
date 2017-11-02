@@ -11,7 +11,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>5328f771-631f-4715-adf7-3a3294efc5a7</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>show_temperature_web.js</StartupFile>
+    <StartupFile>server.js</StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
     </SearchPath>
@@ -28,9 +28,11 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="app.js" />
     <Compile Include="check_connection.js" />
     <Compile Include="get_sql.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="server.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="show_temperature.js" />
