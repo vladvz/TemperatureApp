@@ -8,6 +8,10 @@ var sql = new sqls.getTemperatureSql();
 
 var format = "DD/MM/YYYY HH:mm:ss";
 
+var server = http.createServer(app);
+
+server.listen(8080);
+
 app.get("/", function (req, res) {
     var currentTemperature = dt.getTemperature(sql.currentTemperature);
     var maxTemperature = dt.getTemperature(sql.maxTemperature);
@@ -40,10 +44,6 @@ app.get("/api/getCurrentTemperature", function (req, res) {
         res.send({ Time: value.Time, Temperature: value.Temperature });
     });
 });
-
-var server = http.createServer(app);
-
-server.listen(8080);
 
 function formatRow(title, temperature, datetime) {
     return "<tr><td><b>" + title + "</b></td><td>" + temperature + "</td><td>" + moment(datetime).format(format) + "</td></tr>";
