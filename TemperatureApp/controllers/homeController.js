@@ -31,14 +31,14 @@
         });
     };
 
-    app.get("/api/getCurrentTemperature", function (req, res) {
-        var currentTemperature = dt.getTemperature(sql.currentTemperature);
+    //app.get("/api/getCurrentTemperature", function (req, res) {
+    //    var currentTemperature = dt.getTemperature(sql.currentTemperature);
 
-        currentTemperature.then(value => {
-            res.set("Content-Type", "application/json");
-            res.send({ Time: value.Time, Temperature: value.Temperature });
-        });
-    });
+    //    currentTemperature.then(value => {
+    //        res.set("Content-Type", "application/json");
+    //        res.send({ Time: value.Time, Temperature: value.Temperature });
+    //    });
+    //});
 
     function formatRow(title, temperature, datetime) {
         return "<tr><td><b>" + title + "</b></td><td>" + temperature + "</td><td>" + moment(datetime).format(format) + "</td></tr>";
