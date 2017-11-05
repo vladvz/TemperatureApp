@@ -48,7 +48,11 @@
     <Compile Include="get_connection.js" />
     <Compile Include="get_temperature.js" />
     <Compile Include="show_temperature_web.js" />
+    <Content Include=".bowerrc" />
     <Content Include="package.json" />
+    <Content Include="public\css\site.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="README.md" />
     <Content Include="views\index.vash" />
     <Content Include="views\layout.vash" />
@@ -56,6 +60,8 @@
   <ItemGroup>
     <Folder Include="controllers\" />
     <Folder Include="data\" />
+    <Folder Include="public\" />
+    <Folder Include="public\css\" />
     <Folder Include="views\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
