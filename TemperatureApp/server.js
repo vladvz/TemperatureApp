@@ -11,6 +11,12 @@ var controllers = require("./controllers");
 // Map to routes
 controllers.init(app);
 
+// View engine
+//app.set("view engine", "vash");
+//app.get("/", function (req, res) {
+//    res.render("index", {title: "Vash"})
+//});
+
 var server = http.createServer(app);
 
 server.listen(8080);
